@@ -7,6 +7,11 @@
     --vert-survol: #25904f;
     --papier: #f4f1e6;
     --encre: #222;
+    --rouge-alerte: #8e2a2a;
+    --rouge-survol: #a83232;
+    --papier-fond: #ddd3b8;
+    --papier-ombre: #c9c2ad;
+    --lignes-feuille: #9a9586;
 }
 
 body {
@@ -61,6 +66,25 @@ body {
     background-color: var(--vert-survol);
 }
 
+/* Bouton d'un choix dangereux (rouge au lieu de vert) */
+.btn-danger {
+    background-color: var(--rouge-alerte);
+}
+
+.btn-danger:hover {
+    background-color: var(--rouge-survol);
+}
+
+/* Étiquette des fins (« Mauvaise fin », « Vraie fin »…) */
+.fin {
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 0.8rem;
+    color: var(--jaune);
+}
+
 .fond-accueil {
     background-image: url('assets/backgrounds/accueil.jpg');
 }
@@ -86,6 +110,41 @@ body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('assets/backgrounds/scene05.jpg');
 }
 
+.fond-06 {
+    background-image: url('assets/backgrounds/scene06.jpg');
+}
+
+/* Mauvaise fin : la salle de fête sous un voile rouge sombre */
+.fond-08 {
+    background-image: linear-gradient(rgba(90, 0, 0, 0.55), rgba(20, 0, 0, 0.75)), url('assets/backgrounds/scene06.jpg');
+}
+
+/* Scènes 07 et 10 : plus de décor, on est dans le livre (fond de papier) */
+.fond-page {
+    background-color: var(--papier-fond);
+    background-image: radial-gradient(ellipse at center, var(--papier), var(--papier-fond));
+}
+
+/* La carte devient une page de livre : papier crème, encre noire, police serif */
+.carte-livre {
+    background-color: var(--papier);
+    color: var(--encre);
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.carte-livre h1 {
+    color: var(--encre);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+}
+
+.carte-livre .fin {
+    color: var(--rouge-alerte);
+}
+
 .feuille-sol {
     position: fixed;
     bottom: 40px;
@@ -94,8 +153,8 @@ body {
     height: 90px;
     background-color: var(--papier);
     background-image:
-        linear-gradient(135deg, transparent 88%, #c9c2ad 88%),
-        repeating-linear-gradient(transparent 0 9px, #9a9586 9px 10px);
+        linear-gradient(135deg, transparent 88%, var(--papier-ombre) 88%),
+        repeating-linear-gradient(transparent 0 9px, var(--lignes-feuille) 9px 10px);
     background-size: 100% 100%, 70% 100%;
     background-position: 0 0, 12px 14px;
     background-repeat: no-repeat;
@@ -169,4 +228,22 @@ body {
     0% { opacity: 0; transform: scale(0.6); filter: blur(4px); }
     25%, 60% { opacity: 1; transform: scale(1); filter: blur(0); }
     100% { opacity: 0; transform: scale(1.4); filter: blur(6px); }
+}
+
+/* Système d'indices (scène 07) : « si-indice » est caché par défaut ;
+   script.js ajoute la classe « indice-trouve » au body si un indice a été trouvé */
+.si-indice {
+    display: none;
+}
+
+.indice-trouve .si-indice {
+    display: block;
+}
+
+.indice-trouve .btn.si-indice {
+    display: flex;
+}
+
+.indice-trouve .sans-indice {
+    display: none;
 }

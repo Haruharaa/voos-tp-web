@@ -10,12 +10,13 @@
 <body class="fond-02">
     <main class="carte">
         <h1>Les bureaux abandonnés</h1>
-        <p>Tu entends des néons grésiller au loin, et toi, tu y vas. Bravo. Tu n'as jamais vu un film d'horreur ou quoi ? Te voilà dans un open space immense. Des rangées de bureaux identiques s'alignent jusqu'à disparaître dans la pénombre. Sur chacun, un écran allumé qui n'affiche rien, et une chaise vide, légèrement tournée vers toi. On se croirait dans une réunion Teams où tout le monde a coupé sa caméra. Au fond, une imprimante crache des feuilles sans s'arrêter. Une imprimante qui fonctionne : de loin, la chose la plus surnaturelle que tu aies vue aujourd'hui. Une feuille glisse jusqu'à tes pieds. Elle est encore chaude.</p>
+        <p>Tu entends des néons grésiller au loin, et toi, tu y vas. Bravo. Tu n'as jamais vu un film d'horreur ou quoi ? Te voilà dans un open space immense : des rangées de bureaux vides, des écrans allumés, des chaises tournées vers toi. Comme une réunion Teams où tout le monde a coupé sa caméra. Au fond, une imprimante crache des feuilles sans s'arrêter. L'une d'elles glisse jusqu'à tes pieds. Elle est encore chaude.</p>
         <a href="scene04.html" class="btn"><i class="fa-solid fa-elevator"></i> Prendre l'ascenseur de service</a>
         <a href="scene05.html" class="btn"><i class="fa-solid fa-stairs"></i> Emprunter la cage d'escalier</a>
     </main>
 
-    <a href="#feuille" class="feuille-sol" aria-label="Ramasser la feuille"></a>
+    <!-- Ramasser la feuille donne l'indice « feuille » (voir script.js) -->
+    <a href="#feuille" class="feuille-sol" aria-label="Ramasser la feuille" data-indice-clic="feuille"></a>
 
     <div id="feuille" class="feuille-ouverte">
         <blockquote>
@@ -24,5 +25,6 @@
         </blockquote>
         <a href="#" class="btn"><i class="fa-solid fa-hand"></i> Lâcher la feuille</a>
     </div>
+    <script src="../script.js"></script>
 </body>
 </html>
