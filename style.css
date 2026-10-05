@@ -1,0 +1,182 @@
+:root {
+    --jaune: #c9b458;
+    --jaune-clair: #e8d97a;
+    --texte: #eef2ea;
+    --fond-carte: rgba(18, 28, 30, 0.86);
+    --vert-sortie: #1f7a46;
+    --vert-survol: #25904f;
+    --papier: #f4f1e6;
+    --encre: #222;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: #111;
+    color: var(--texte);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.carte {
+    max-width: 720px;
+    padding: 30px;
+    background-color: var(--fond-carte);
+    border: 1px solid var(--jaune);
+    border-radius: 10px;
+}
+
+.carte h1 {
+    color: var(--jaune-clair);
+    text-align: center;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.carte p {
+    line-height: 1.7;
+}
+
+/* Carte haute : posée en haut de l'écran, plus large et plus compacte,
+   pour laisser voir le point de fuite et le sol de l'image */
+.carte-haute {
+    max-width: 1000px;
+    align-self: flex-start;
+    margin-top: 3vh;
+    padding: 18px 26px;
+}
+
+.carte-haute h1 {
+    margin: 0 0 8px;
+    font-size: 1.5rem;
+}
+
+.carte-haute p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background-color: var(--vert-sortie);
+    color: white;
+    border: 2px solid white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-family: "Courier New", Courier, monospace;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    margin-bottom: 10px;
+}
+
+.btn:hover {
+    transform: translateX(6px);
+    background-color: var(--vert-survol);
+}
+
+.fond-accueil {
+    background-image: url('assets/backgrounds/accueil.jpg');
+}
+
+.fond-01 {
+    background-image: url('assets/backgrounds/scene01.jpg');
+}
+
+.fond-02 {
+    background-image: url('assets/backgrounds/scene02.jpg');
+}
+
+.fond-03 {
+    background-image: url('assets/backgrounds/scene03.jpg');
+}
+
+.feuille-sol {
+    position: fixed;
+    bottom: 40px;
+    left: calc(50% - 35px);
+    width: 70px;
+    height: 90px;
+    background-color: var(--papier);
+    background-image:
+        linear-gradient(135deg, transparent 88%, #c9c2ad 88%),
+        repeating-linear-gradient(transparent 0 9px, #9a9586 9px 10px);
+    background-size: 100% 100%, 70% 100%;
+    background-position: 0 0, 12px 14px;
+    background-repeat: no-repeat;
+    transform: perspective(500px) rotateX(55deg) rotate(-14deg);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: -6px 14px 12px rgba(0, 0, 0, 0.55);
+    filter: brightness(0.85);
+    animation: lueur-feuille 3s ease-in-out infinite;
+}
+
+.feuille-sol:hover {
+    transform: perspective(500px) rotateX(25deg) rotate(-6deg) translateY(-14px);
+}
+
+@keyframes lueur-feuille {
+    0%, 100% { filter: brightness(0.85); }
+    50% { filter: brightness(1.05); }
+}
+
+.feuille-ouverte {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.feuille-ouverte:target {
+    display: flex;
+}
+
+.feuille-ouverte blockquote {
+    background-color: var(--papier);
+    color: var(--encre);
+    font-family: "Courier New", Courier, monospace;
+    max-width: 500px;
+    padding: 20px;
+    transform: rotate(1deg);
+}
+
+.encre {
+    position: fixed;
+    top: 74vh;
+    left: 0;
+    right: 0;
+    margin: 0;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 3.5rem;
+    mix-blend-mode: multiply;
+    letter-spacing: 0.3em;
+    color: var(--encre);
+    transform: perspective(300px) rotateX(55deg);
+}
+
+.encre span {
+    display: inline-block;
+    opacity: 0;
+    animation: encre-flotte 5s ease-in-out infinite;
+}
+
+.encre span:nth-child(2) { animation-delay: 0.3s; }
+.encre span:nth-child(3) { animation-delay: 0.6s; }
+.encre span:nth-child(4) { animation-delay: 0.9s; }
+.encre span:nth-child(5) { animation-delay: 1.2s; }
+.encre span:nth-child(6) { animation-delay: 1.5s; }
+
+@keyframes encre-flotte {
+    0% { opacity: 0; transform: scale(0.6); filter: blur(4px); }
+    25%, 60% { opacity: 1; transform: scale(1); filter: blur(0); }
+    100% { opacity: 0; transform: scale(1.4); filter: blur(6px); }
+}
