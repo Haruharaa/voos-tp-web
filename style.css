@@ -41,25 +41,6 @@ body {
     line-height: 1.7;
 }
 
-/* Carte haute : posée en haut de l'écran, plus large et plus compacte,
-   pour laisser voir le point de fuite et le sol de l'image */
-.carte-haute {
-    max-width: 1000px;
-    align-self: flex-start;
-    margin-top: 3vh;
-    padding: 18px 26px;
-}
-
-.carte-haute h1 {
-    margin: 0 0 8px;
-    font-size: 1.5rem;
-}
-
-.carte-haute p {
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
-
 .btn {
     display: flex;
     align-items: center;
@@ -94,6 +75,15 @@ body {
 
 .fond-03 {
     background-image: url('assets/backgrounds/scene03.jpg');
+}
+
+.fond-04 {
+    background-image: url('assets/backgrounds/scene04.jpg');
+}
+
+.fond-05 {
+    /* Voile sombre par-dessus l'image : la photo d'origine est trop lumineuse */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('assets/backgrounds/scene05.jpg');
 }
 
 .feuille-sol {
@@ -150,7 +140,7 @@ body {
 
 .encre {
     position: fixed;
-    top: 74vh;
+    bottom: 6vh;
     left: 0;
     right: 0;
     margin: 0;
